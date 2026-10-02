@@ -1,4 +1,0 @@
-Userscripts iPhone設定ガイド
-
-GitHub Pagesへ公開する場合は、index.htmlとimagesフォルダを同じ階層で配置してください。
-imagesフォルダには、今回提供された画像ZIP内の9枚をそのまま格納しています。
