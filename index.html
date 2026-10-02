@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="iPhoneでUserscriptsを設定する手順を、スクリーンショット付きで紹介します。">
+<title>iPhone Userscripts 設定ガイド</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;color:#182238;background:#f4f7fc;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;line-height:1.7}
+.hero{padding:48px 20px 40px;text-align:center;background:linear-gradient(140deg,#e9f1ff,#fff 70%);border-bottom:1px solid #e2e9f3}
+.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.15em;color:#3269cf}
+h1{margin:8px 0 10px;font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.25;letter-spacing:.01em}
+.hero p{max-width:680px;margin:0 auto;color:#5d687b}
+main{width:min(1080px,100%);margin:0 auto;padding:28px 18px 56px}
+.intro{display:flex;align-items:flex-start;gap:12px;margin:0 0 22px;padding:15px 17px;border:1px solid #d8e5fb;background:#edf4ff;border-radius:14px;color:#294675}
+.intro svg{flex:0 0 auto;margin-top:3px}
+.steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.step{min-width:0;background:#fff;border:1px solid #e3e9f2;border-radius:17px;overflow:hidden;box-shadow:0 5px 20px rgba(31,55,90,.055);display:flex;flex-direction:column}
+.image-wrap{display:flex;align-items:center;justify-content:center;padding:14px;background:#f0f2f6;min-height:220px}
+.image-wrap img{display:block;width:auto;height:auto;max-width:100%;max-height:470px;object-fit:contain;border-radius:8px}
+.step-text{padding:15px 18px 19px}
+.step-group{font-size:.68rem;font-weight:800;letter-spacing:.12em;color:#3d70d2}
+h3{font-size:1.08rem;line-height:1.45;margin:4px 0 7px}
+.step-text p{margin:0;color:#5c6678;font-size:.92rem}
+.app-link{margin-top:22px;padding:19px 20px;background:#fff;border:1px solid #e3e9f2;border-radius:15px;text-align:center}
+.app-link p{margin:0 0 10px;color:#5c6678}
+.app-link a{display:inline-block;padding:10px 17px;border-radius:999px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700}
+footer{text-align:center;margin-top:22px;color:#788295;font-size:.8rem}
+@media(max-width:650px){.hero{padding:35px 17px 29px}main{padding:18px 13px 42px}.steps{grid-template-columns:1fr;gap:14px}.image-wrap{min-height:120px}.image-wrap img{max-height:510px}.step-text{padding:14px 16px 17px}}
+@media(prefers-reduced-motion:no-preference){.step{transition:transform .18s ease,box-shadow .18s ease}.step:hover{transform:translateY(-2px);box-shadow:0 9px 26px rgba(31,55,90,.09)}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">IPHONE SETUP GUIDE</div>
+  <h1>Userscripts 設定ガイド</h1>
+  <p>iPhoneにUserscriptsをインストールし、Safariでスクリプトを使えるようにするまでを、9枚の画像で説明します。</p>
+</header>
+<main>
+  <div class="intro"><span aria-hidden="true">ℹ️</span><div><strong>はじめに</strong><br>ZIPファイルは「ファイル」アプリの「このiPhone内 ＞ Userscripts」フォルダに保存してください。保存後、ZIPをタップして展開します。</div></div>
+  <section class="steps" aria-label="設定手順">
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step1-appstore.png" alt="① Userscriptsをインストール" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP1</span><h3>① Userscriptsをインストール</h3><p>App StoreからUserscriptsをインストールします。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step2-files-folder.png" alt="② ZIPファイルを保存" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP2</span><h3>② ZIPファイルを保存</h3><p>ファイルアプリで「このiPhone内 ＞ Userscripts」フォルダにZIPファイルを保存します。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step2-js-file.webp" alt="③ JSファイルを展開" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP2</span><h3>③ JSファイルを展開</h3><p>保存したZIPファイルをタップして展開し、JavaScriptファイルが表示されることを確認します。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step3-settings.png" alt="④ iPhoneの設定を開く" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP3</span><h3>④ iPhoneの設定を開く</h3><p>設定アプリを開き、「アプリ」へ進みます。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step3-safari.png" alt="⑤ Safariを選択" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP3</span><h3>⑤ Safariを選択</h3><p>アプリ一覧からSafariを選択します。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step3-extensions.png" alt="⑥ 機能拡張を開く" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP3</span><h3>⑥ 機能拡張を開く</h3><p>Safariの設定にある「機能拡張」をタップします。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step3-userscripts-toggle.png" alt="⑦ Userscriptsをオンにする" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP3</span><h3>⑦ Userscriptsをオンにする</h3><p>機能拡張の一覧でUserscriptsをオンにします。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step4-puzzle-menu.png" alt="⑧ Safariのメニューを開く" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP4</span><h3>⑧ Safariのメニューを開く</h3><p>スクリプトを使いたいWebサイトを開き、URLバー付近のパズルアイコンをタップしてUserscriptsを選びます。</p></div>
+      </article>
+
+      <article class="step">
+        <div class="image-wrap"><img src="images/step4-script-status.png" alt="⑨ スクリプトの状態を確認" loading="lazy"></div>
+        <div class="step-text"><span class="step-group">STEP4</span><h3>⑨ スクリプトの状態を確認</h3><p>保存したファイルが表示され、「JS」の文字が黄色になっていることを確認します。</p></div>
+      </article>
+  </section>
+  <section class="app-link">
+    <p>Userscriptsをまだインストールしていない場合</p>
+    <a href="https://apps.apple.com/jp/app/userscripts/id1463298887" target="_blank" rel="noopener noreferrer">App StoreでUserscriptsを開く</a>
+  </section>
+  <footer>iPhoneのiOSバージョンにより、設定画面の表示が異なる場合があります。</footer>
+</main>
+</body>
+</html>
