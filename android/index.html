@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f5f7">
+<title>Androidでユーザースクリプトを使う</title>
+<style>
+:root{--bg:#f5f5f7;--surface:#fff;--ink:#202124;--muted:#666a73;--line:#e6e7eb;--accent:#6750a4;--accent-soft:#eee8fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans JP",sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:#fff;border-bottom:1px solid var(--line);padding:36px 20px 27px}
+.head{max-width:900px;margin:auto}
+.eyebrow{font-size:12px;letter-spacing:.11em;font-weight:700;color:var(--muted)}
+h1{font-size:clamp(27px,5vw,36px);line-height:1.22;letter-spacing:-.035em;margin:7px 0 8px;font-weight:750}
+header p{font-size:15px;color:var(--muted);margin:0}
+main{max-width:900px;margin:auto;padding:24px 16px 48px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:18px;box-shadow:0 1px 2px #00000008}
+.stephead{display:flex;gap:13px;align-items:flex-start;padding:19px 20px 16px}
+.num{flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:15px;font-weight:750}
+h2{font-size:18px;line-height:1.35;margin:1px 0 4px;letter-spacing:-.02em}
+.stephead p{margin:0;color:var(--muted);font-size:14px}
+.pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+figure{margin:0;padding:14px;display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0}
+figure+figure{border-left:1px solid var(--line)}
+figure img{display:block;max-width:100%;width:auto;height:auto;max-height:680px;object-fit:contain;border-radius:8px}
+figcaption{font-size:13px;color:var(--muted);text-align:center;line-height:1.45}
+.single{border-top:1px solid var(--line);padding:14px;display:flex;justify-content:center;background:#fafafd}
+.single img{display:block;max-width:100%;width:auto;height:auto;max-height:700px;object-fit:contain;border-radius:8px}
+.callout{margin:0 0 18px;padding:13px 16px;border-radius:12px;background:var(--accent-soft);color:#493779;font-size:13px}
+.codehead{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;border-bottom:1px solid var(--line)}
+.codehead strong{font-size:15px}
+.copy{appearance:none;border:0;border-radius:20px;padding:8px 14px;background:var(--accent-soft);color:var(--accent);font:600 13px inherit;cursor:pointer}
+pre{margin:0;padding:17px;overflow:auto;background:#1e1e22;color:#e8e8ed;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
+.code-note{padding:12px 17px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+a{color:var(--accent);text-decoration:none;font-weight:600}
+.linkcard{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;margin:0 0 18px}
+.linkcard small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+footer{text-align:center;color:#8b8e96;font-size:12px;padding-top:18px}
+@media(max-width:620px){
+ header{padding:30px 17px 22px}main{padding:16px 11px 34px}
+ .step{border-radius:14px;margin-bottom:14px}.stephead{padding:16px 15px 13px;gap:11px}
+ h2{font-size:17px}.stephead p{font-size:13px}
+ .pics{grid-template-columns:1fr}figure{padding:13px 12px}figure+figure{border-left:0;border-top:1px solid var(--line)}
+ figure img{max-height:650px}.single{padding:12px}.single img{max-height:680px}
+ pre{font-size:11px;padding:13px}
+}
+</style>
+</head>
+<body>
+<header><div class="head">
+  <div class="eyebrow">ANDROID / FIREFOX</div>
+  <h1>Androidでユーザースクリプトを使う</h1>
+  <p>FirefoxにTampermonkeyを追加し、スクリプトを設定する手順</p>
+</div></header>
+<main>
+  <section class="step">
+    <div class="stephead"><span class="num">1</span><div><h2>Tampermonkeyをインストールして有効化</h2><p>Firefoxの拡張機能から追加し、利用設定を確認します。</p></div></div>
+    <div class="single"><img src="images/step1-tampermonkey-enabled.png" alt="FirefoxのTampermonkey拡張機能の有効設定画面"></div>
+    <div class="code-note">インストール後、メニュー ＞ 拡張機能 ＞ Tampermonkeyを開き、「有効」と「プライベートモードでも有効」をオンにします。</div>
+  </section>
+
+  <div class="linkcard">
+    <div><strong>Tampermonkey for Firefox</strong><small>Firefox Add-onsからインストール</small></div>
+    <a href="https://addons.mozilla.org/ja/firefox/addon/tampermonkey/" target="_blank" rel="noopener noreferrer">開く ↗</a>
+  </div>
+
+  <section class="step">
+    <div class="stephead"><span class="num">2</span><div><h2>新規Scriptを作成してコードを貼り付ける</h2><p>Tampermonkeyの設定画面から新しいスクリプトを作成します。</p></div></div>
+    <div class="single"><img src="images/step2-new-script.png" alt="Tampermonkeyの新規ユーザースクリプト編集画面"></div>
+    <div class="code-note">メニュー ＞ 拡張機能 ＞ Tampermonkey ＞ 設定を開き、「＋」ボタンで新規Scriptを作成します。下のコードを貼り付けて保存してください。</div>
+    <div class="codehead"><strong>貼り付けるUserScript</strong><button class="copy" type="button" onclick="copyScript()">コードをコピー</button></div>
+    <pre id="userscript"><code>// ==UserScript==
+// @name         eplus スマチケ・コンビニATMを選んで確定
+// @namespace    https://userscripts.app/
+// @version      1.0
+// @description  スマチケとコンビニ／ATMを選択して次へ進みます。
+// @author       You
+// @match        https://atom.eplus.jp/sys/main.jsp*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    &#x27;use strict&#x27;;
+
+    let done = false;
+
+    function trySubmit() {
+        if (done) return;
+
+        const receive = document.querySelector(
+            &#x27;input[name=&quot;vuketoriHohoSentaku&quot;][value=&quot;7&quot;]&#x27;
+        );
+        const payment = document.querySelector(
+            &#x27;input[name=&quot;vsiharaiHohoSentaku&quot;][value=&quot;3&quot;]&#x27;
+        );
+        const frm = document.mainForm;
+
+        if (!receive || !payment || !frm || !frm[&#x27;uji.anchorVerb&#x27;]) return;
+
+        done = true;
+        observer.disconnect();
+
+        receive.checked = true;
+        payment.checked = true;
+
+        frm[&#x27;uji.anchorVerb&#x27;].name = &#x27;GB1112_HENKOU&#x27;;
+        frm.submit();
+    }
+
+    const observer = new MutationObserver(trySubmit);
+    observer.observe(document, { childList: true, subtree: true });
+    trySubmit();
+})();</code></pre>
+    <div class="code-note">このスクリプトは、指定されたeplusページ上で受取方法・支払方法を選択してフォームを送信する内容です。内容を確認したうえで使用してください。</div>
+  </section>
+
+  <section class="step">
+    <div class="stephead"><span class="num">3</span><div><h2>対象サイトでScriptが有効か確認</h2><p>スクリプトを発動させたいドメインを開き、Tampermonkeyの状態を確認します。</p></div></div>
+    <div class="pics">
+      <figure><img src="images/step3-firefox-menu.png" alt="Firefoxメニュー内のTampermonkey項目"><figcaption>メニューからTampermonkeyを開く</figcaption></figure>
+      <figure><img src="images/step3-script-active.png" alt="Tampermonkey内でスクリプトが有効になっている画面"><figcaption>「有効」にチェックがあり、該当Scriptがアクティブであることを確認</figcaption></figure>
+    </div>
+  </section>
+  <div class="callout">画面やメニューの表示は、FirefoxやTampermonkeyのバージョンによって異なる場合があります。</div>
+  <footer>Android / Firefox 操作ガイド</footer>
+</main>
+<script>
+function copyScript(){
+  const text = document.getElementById('userscript').innerText;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(()=>{document.querySelector('.copy').textContent='コピーしました';}).catch(()=>fallbackCopy(text));
+  } else { fallbackCopy(text); }
+}
+function fallbackCopy(text){
+  const area=document.createElement('textarea'); area.value=text; area.style.position='fixed'; area.style.opacity='0'; document.body.appendChild(area); area.select();
+  try{document.execCommand('copy');document.querySelector('.copy').textContent='コピーしました';}catch(e){document.querySelector('.copy').textContent='コピー不可';}
+  area.remove();
+}
+</script>
+</body>
+</html>
