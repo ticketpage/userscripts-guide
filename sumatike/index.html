@@ -19,7 +19,7 @@ main{max-width:900px;margin:0 auto;padding:24px 16px 48px}
 .step-heading{display:flex;gap:13px;align-items:flex-start;padding:19px 20px 16px}
 .number{display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:50%;background:var(--blue);color:white;font-size:16px;font-weight:700}
 h2{font-size:18px;line-height:1.35;letter-spacing:-.02em;margin:1px 0 4px;font-weight:700}
-.step-heading p{margin:0;color:var(--secondary);font-size:14px}
+.step-heading p{margin:0;color:var(--secondary);font-size:14px}.step-heading p.browser-note{margin-top:5px;color:var(--blue);font-weight:600}
 .screens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--separator)}
 figure{margin:0;min-width:0;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px}
 figure+figure{border-left:1px solid var(--separator)}
@@ -50,17 +50,17 @@ footer{text-align:center;color:#8e8e93;font-size:12px;padding-top:19px}
 </div></header>
 <main>
 <section class="step">
-  <div class="step-heading"><span class="number">1</span><div><h2>デスクトップ用ウェブサイトを表示</h2><p>公演一覧ページからSafariのメニューを開きます。</p></div></div>
+  <div class="step-heading"><span class="number">1</span><div><h2>デスクトップ用ウェブサイトを表示</h2><p>公演一覧ページからブラウザのメニューを開きます。</p><p class="browser-note">Firefoxの場合：メニューの「PC版サイト」をONにします。</p></div></div>
   <div class="screens">
     <figure><img src="images/step1-list.jpeg" alt="atom.eplus.jpの公演一覧ページ"><figcaption>公演一覧ページを表示</figcaption></figure>
-    <figure><img src="images/step1-desktop-menu.jpeg" alt="メニューでデスクトップ用ウェブサイトを表示を選択"><figcaption>メニューから「デスクトップ用ウェブサイトを表示」を選択</figcaption></figure>
+    <figure><img src="images/step1-desktop-menu.jpeg" alt="メニューでデスクトップ用ウェブサイトを表示を選択"><figcaption>メニューから「デスクトップ用ウェブサイトを表示」を選択<br><strong>Firefoxの場合：「PC版サイト」をON</strong></figcaption></figure>
   </div>
 </section>
 <section class="step">
-  <div class="step-heading"><span class="number">2</span><div><h2>モバイル用ウェブサイトに切り替える</h2><p>PC用サイトが表示されたことを確認してから、メニューを開き直します。</p></div></div>
+  <div class="step-heading"><span class="number">2</span><div><h2>モバイル用ウェブサイトに切り替える</h2><p>PC用サイトが表示されたことを確認してから、メニューを開き直します。</p><p class="browser-note">Firefoxの場合：メニューの「PC版サイト」をOFFにします。</p></div></div>
   <div class="screens">
     <figure><img src="images/step2-desktop-page.jpeg" alt="PC用表示になった公演ページ"><figcaption>PC用サイトが表示された状態</figcaption></figure>
-    <figure><img src="images/step2-mobile-menu.jpeg" alt="モバイル用ウェブサイトを表示するメニュー"><figcaption>「モバイル用ウェブサイトを表示」を選択</figcaption></figure>
+    <figure><img src="images/step2-mobile-menu.jpeg" alt="モバイル用ウェブサイトを表示するメニュー"><figcaption>「モバイル用ウェブサイトを表示」を選択<br><strong>Firefoxの場合：「PC版サイト」をOFF</strong></figcaption></figure>
   </div>
 </section>
 <section class="step">
