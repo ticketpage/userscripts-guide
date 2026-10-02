@@ -1,8 +1,4 @@
-iPhone Userscripts 設定ガイド（GitHub Pages用）
+Userscripts iPhone設定ガイド
 
-公開手順:
-1. このZIPを展開します。
-2. index.html と images フォルダを同じ階層のままGitHubリポジトリに配置します。
-3. GitHubリポジトリの Settings > Pages で公開元を設定します。
-
-画像は今回提供された images.zip 内の9枚をそのまま使用し、合成・再生成・加工はしていません。
+GitHub Pagesへ公開する場合は、index.htmlとimagesフォルダを同じ階層で配置してください。
+imagesフォルダには、今回提供された画像ZIP内の9枚をそのまま格納しています。
